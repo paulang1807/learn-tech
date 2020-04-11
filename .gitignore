@@ -1,1 +1,37 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 simple-web-server/node_modules
+default-react-app/node_modules
+my-first-react-app/node_modules
+default-react-app/.pnp
+default-react-app/.pnp.js
+my-first-react-app/.pnp
+my-first-react-app/.pnp.js
+
+# testing
+default-react-app/coverage
+my-first-react-app/coverage
+
+# production
+default-react-app/build
+my-first-react-app/build
+
+# misc
+default-react-app/.DS_Store
+default-react-app/.env.local
+default-react-app/.env.development.local
+default-react-app/.env.test.local
+default-react-app/.env.production.local
+my-first-react-app/.DS_Store
+my-first-react-app/.env.local
+my-first-react-app/.env.development.local
+my-first-react-app/.env.test.local
+my-first-react-app/.env.production.local
+
+default-react-app/npm-debug.log*
+default-react-app/yarn-debug.log*
+default-react-app/yarn-error.log*
+my-first-react-app/npm-debug.log*
+my-first-react-app/yarn-debug.log*
+my-first-react-app/yarn-error.log*
