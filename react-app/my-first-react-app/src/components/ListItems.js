@@ -1,12 +1,18 @@
 import React from "react"
+import ShoppingList from "./ShoppingList"
 
 function ListItems() {
     return (
-        <div>
-            <input type="checkbox" id="item1" name="item1" value="item1" />
-            <label for="item1">Item 1</label><br/>
-            <input type="checkbox" id="item2" name="item2" value="item2" />
-            <label for="item2">Item 2</label><br/>
+        <div className="shopList">
+            <ShoppingList 
+                items={{name: "Item 1", quantity: 2}}
+            />
+            <ShoppingList
+                items={{name: "Item 2", quantity: 1}}
+            />
+            <ShoppingList
+                items={{name: "Item 3", quantity: 5}}
+            />
         </div>
     )
 }

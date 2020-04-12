@@ -17,7 +17,7 @@ function Header() {
         timeOfDay = "Afternoon"
         styles.color = "blue"
     } else {
-        timeOfDay = "Night"
+        timeOfDay = "Evening"
         styles.color = "green"
     }
 
