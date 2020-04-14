@@ -1,6 +1,7 @@
 import React, {Component} from "react"
+import StateSampleTwo from "./StateSampleTwo"
 
-class App extends Component {
+class StateSample extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,14 +13,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.fname}</h1>
-                <h3>{this.state.lname}</h3>
-
                 {/* Use props to pass state value to components */}
-                <TestComp fname={this.state.fname} />
+                <StateSampleTwo fname={this.state.fname} lname={this.state.lname} />
             </div>
         )    
     }
 }
 
-export default App
+export default StateSample
