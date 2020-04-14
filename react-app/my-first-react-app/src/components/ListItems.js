@@ -7,11 +7,21 @@ import itemsData from "../data/itemsData"
 //     return (<ShoppingList key={item.id} items={{name: item.name, quantity: item.quantity}} />)
 // })
 
-// This is an array of 'ShoppingList' components
-const itemLists = itemsData.map(item => <ShoppingList key={item.id} items={item} />)
+
 
 class ListItems extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            itemLists: itemsData
+        }
+    }
+
     render() {
+        // This is an array of 'ShoppingList' components
+        const itemLists = this.state.itemLists.map(item => <ShoppingList key={item.id} items={item} />)
+
         return (
             <div className="shopList">
                 {itemLists}     {/* Replace the individual components with the array of components returned dynamically base don data */}
