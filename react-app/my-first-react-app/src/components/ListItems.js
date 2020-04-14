@@ -1,18 +1,19 @@
 import React from "react"
 import ShoppingList from "./ShoppingList"
 
+import itemsData from "../data/itemsData"
+
+// const itemLists = itemsData.map(function(item) {
+//     return (<ShoppingList key={item.id} items={{name: item.name, quantity: item.quantity}} />)
+// })
+
+// This is an array of 'ShoppingList' components
+const itemLists = itemsData.map(item => <ShoppingList key={item.id} items={item} />)
+
 function ListItems() {
     return (
         <div className="shopList">
-            <ShoppingList 
-                items={{name: "Item 1", quantity: 2}}
-            />
-            <ShoppingList
-                items={{name: "Item 2", quantity: 1}}
-            />
-            <ShoppingList
-                items={{name: "Item 3", quantity: 5}}
-            />
+            {itemLists}     {/* Replace the individual components with the array of components returned dynamically base don data */}
         </div>
     )
 }
