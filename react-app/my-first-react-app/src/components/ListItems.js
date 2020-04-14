@@ -1,4 +1,4 @@
-import React from "react"
+import React, {Component} from "react"
 import ShoppingList from "./ShoppingList"
 
 import itemsData from "../data/itemsData"
@@ -10,12 +10,14 @@ import itemsData from "../data/itemsData"
 // This is an array of 'ShoppingList' components
 const itemLists = itemsData.map(item => <ShoppingList key={item.id} items={item} />)
 
-function ListItems() {
-    return (
-        <div className="shopList">
-            {itemLists}     {/* Replace the individual components with the array of components returned dynamically base don data */}
-        </div>
-    )
+class ListItems extends Component {
+    render() {
+        return (
+            <div className="shopList">
+                {itemLists}     {/* Replace the individual components with the array of components returned dynamically base don data */}
+            </div>
+        )
+    }
 }
 
 export default ListItems
