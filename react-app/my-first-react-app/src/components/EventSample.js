@@ -1,16 +1,14 @@
-import React from "react"
+import React, { Component } from "react"
 
-function clickFunction() {
-    alert("Button Clicked!")
-}
-
-function EventSample() {
-    return (
-        <div>
-            <button onClick={clickFunction}>Click Here</button>
-            <button onMouseOver={() => alert("Mouseover Action!")}>Hover Here</button>
-        </div>
-    )
+class EventSample extends Component {
+    render() {
+        return (
+            <div>
+                {/* Access class props using this.props */}
+                <b>Total Items: </b>{this.props.totalitems}, <b>Shopped: </b>{this.props.shoppeditems}
+            </div>
+        )
+    }
 }
 
 export default EventSample
