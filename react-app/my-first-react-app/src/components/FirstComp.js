@@ -8,15 +8,23 @@ class FirstComp extends React.Component {
     constructor() {
         super()
         this.state = {
-            isLoading: true
+            isLoading: false,
+            starWarsData: {}
         }
     }
 
     componentDidMount() {
         console.log("this is called after render")
-        setTimeout(() => {
-            this.setState({isLoading: false})
-        }, 1500)
+        this.setState({isLoading: true})
+        // Get data from sample api - not used in this app
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+            .then(response => response.json())      // promise
+            .then(data => {
+                this.setState({
+                    isLoading: false,
+                    starWarsData: data
+                })
+            })
     }
 
     render() {
