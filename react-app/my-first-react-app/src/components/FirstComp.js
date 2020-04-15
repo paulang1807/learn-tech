@@ -3,6 +3,7 @@ import Header from "./Header"
 import ListItems from "./ListItems"
 import Footer from "./Footer"
 import StateSample from "./StateSample"
+import Forms from "./Forms"
 
 class FirstComp extends React.Component {
     constructor() {
@@ -37,6 +38,7 @@ class FirstComp extends React.Component {
                     <StateSample />
                     <Header />
                     <ListItems />
+                    <Forms />
                     <Footer />
                 </div>
                 }
