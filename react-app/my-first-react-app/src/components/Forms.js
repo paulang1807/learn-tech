@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import FormComponents from "./FormComponents"
 
 class Forms extends Component {
     constructor() {
@@ -34,45 +35,11 @@ class Forms extends Component {
     
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                {/* Input Box */}
-                <input 
-                    type="text" 
-                    value={this.state.txtVal}   // control form concept - drive value based on state
-                    name="txtVal" 
-                    placeholder="Text Here" 
-                    onChange={this.handleChange} 
-                />
-                <p>{this.state.txtVal}</p>
-                {/* textarea - self closing tag in react unlike html*/}
-                <textarea value={this.state.txtArVal} name="txtArVal" onChange={this.handleChange}/>
-                <p>{this.state.txtArVal}</p>
-                {/* checkbox */}
-                <label>
-                    <input type="checkbox" name="inpChk" checked={this.state.inpChk} onChange={this.handleChange}/> Okay?
-                </label>
-                <p>Checked: {this.state.inpChk ? 'Yes' : 'No'}</p>
-                {/* radio button */}
-                <label>
-                <input type="radio" name="chooseOptn" value="yes" checked={this.state.chooseOptn === "yes"} onChange={this.handleChange} /> Yes
-                </label>
-                <label>
-                <input type="radio" name="chooseOptn" value="no" checked={this.state.chooseOptn === "no"} onChange={this.handleChange} /> No
-                </label>
-                <p>Chosen Option: {this.state.chooseOptn}</p>
-                {/* select - dropdown */}
-                <label>Select Animal:</label>
-                <select name="selAnimal" value={this.state.selAnimal} onChange={this.handleChange}>
-                    <option value="tiger">Tiger</option>
-                    <option value="lion">Lion</option>
-                    <option value="leopard">Leopard</option>
-                    <option value="jaguar">Jaguar</option>
-                </select>
-                <p>Selected Animal: {this.state.selAnimal}</p>
-                {/* button */}
-                <button>Submit</button>
-                <p>{this.state.submitMsg}</p>
-            </form>
+            <FormComponents 
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                data={this.state}
+            />
         )
     }
 }
