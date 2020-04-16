@@ -27,7 +27,8 @@ class Forms extends Component {
         })
     }
 
-    handleSubmit() {
+    handleSubmit(event) {
+        event.preventDefault()      // Prevent page from refreshing
         this.setState({
             submitMsg: "The form has been Submitted"
         })
