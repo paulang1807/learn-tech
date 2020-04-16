@@ -4,19 +4,16 @@ import ShoppingList from "./ShoppingList"
 import itemsData from "../data/itemsData"
 import EventSample from "./EventSample"
 class ListItems extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            itemLists: itemsData,
-            shoppedItems: 0
-        }
-
-        this.updateItems = this.updateItems.bind(this)
-        this.getShopped = this.getShopped.bind(this)
+    // With new changes in react, we dont need a constructor for defining state objects
+    // Also we no longer need to bind methods inside a constructor if we use arrow functions
+    // Example: updateItems and getShopped methods below
+    
+    state = {
+        itemLists: itemsData,
+        shoppedItems: 0
     }
 
-    updateItems(id) {
+    updateItems = (id) => {
         this.setState(prevState => {
             const updatedItems = prevState.itemLists.map(itm => {
                 if (itm.id === id) {
@@ -43,7 +40,7 @@ class ListItems extends Component {
         return false;
       }
 
-    getShopped(shoppeditems) {
+    getShopped = (shoppeditems) => {
         let itmsShopped = shoppeditems.filter(this.filterByChecked)
         return itmsShopped
     }
