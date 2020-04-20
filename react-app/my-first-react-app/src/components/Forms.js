@@ -18,6 +18,7 @@ class Forms extends Component {
     
     handleChange(event) {
         // Best practice - extract what you need from event beforehand
+        // This is called object destructuring
         const {name, value, type, checked} = event.target
         type === 'checkbox' ? this.setState({[name]: checked}) :
         this.setState({
