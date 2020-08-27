@@ -1,12 +1,13 @@
 ## Useful Commands
 - Get details on docker installation : `docker info`
 - Login to docker (writes session id to ~/.docker/config.json): `docker login`
+- See space usage: `docker system df`
 
 ### Working with Images
 - Show all images I own: `docker images`
 - Pull Images: `docker pull <image_name>`
-- Tag an image: `docker image tag <source_image[:tag]> <target_image[:tag]>`
-- Push images to repository: `docker image push <image_name[:tagname]>`
+- Tag an image (image name should be prefixed by docker account name if we want to publish them): `docker image tag <source_image[:tag]> <target_image[:tag]>`
+- Push images to repository: `docker image push <account_name/image_name[:tagname]>`
 - Find docker images that are not serving any purpose and are just consuming disk space: `docker images -f dangling=true`
 
 ### Running and Stopping Containers
@@ -56,7 +57,10 @@
     - Can remove multiple containers at the same time by specifying multiple ids
     - Do not need to specify the entire container id; the first three or four characters that can be used to identify the container uniquely can be used
 - Remove an image: `docker rmi <imageid>`
+- Clean up just the dangling images: `docker image prune`
 - Remove all containers (Nuclear option that will destroy all containers). Good for cases when you have several stray containers and you are sure you don't want to keep any of them: `docker rm -f $(docker ps -aq)`
+- Remove all images not being used: `docker system prune -a`
+- Clean up everything: `docker system prune`
 
 ### Docker Networks
 - List all networks: `docker network ls`
@@ -70,3 +74,4 @@
 - Sometimes you may get permission denied when running docker commands. To get around this add the current user to the docker group:
 `sudo usermod -a -G docker <username>`
 - To set up command line help (shell completion), follow the links in this url - https://docs.docker.com/docker-for-mac/#install-shell-completion
+- In order to create a private docker image, create a private repo in docker hub first and then upload the image.
