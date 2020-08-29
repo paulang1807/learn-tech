@@ -16,21 +16,16 @@
 - Run container (downloads the image of the container if it doesn’t exist) : `docker container run <container_name>` 
     - Use `-it` flag to open container terminal in interactive mode
     - Use `--rm` flag to remove the container on exit
-    - Use `-v` flag to specify the volume to be mounted
-        ```
-        docker container run -it --rm -v /<share_path_in_local>:/<share_name_in_container> <image_name>:<tagname> bash
-        ```
     - Use `-d` or `--detach` flag to run it in the background (detached mode)
     - Use `-p <local_port>:<container_port>` or `--publish` flag to specify port
     - Use `--net=host` to specify local host as the network
     - Use `--name` flag to give the container a name
-        ```
-        docker container run -d --net=host nginx
-        docker container run -d --name myredis -p 6379:6379 redis
-        ```
     - Use `-e` or `--env` flag to pass environment variables
     - Use `--net` flag to specify the network to connect to
+        - Use `--net=host` to specify host network
     - Use `--network-alias` to set a dns alias
+    - Use `-v <[volume_name]:/<path_in_container>` flag to specify a volume
+        - Specify a path instead of volume name to the left of the colon for creating bind volumes: `-v /<share_path_in_host>:/<path_in_container>`
 - Run bash shell when starting a new container: `docker container run -it --name nginx nginx bash`
     - For Alpine distribution, use sh first and then install bash in the container: `docker container run -it alpine sh`
 - Start an existing container (which is in exited status): `docker container start <container id or name>`
@@ -44,7 +39,8 @@
 
 #### Get container details
 - Checking logs in a container: `docker container logs <container_id>`
-    Get the top few lines of the log: `docker container top <container_id>`
+    - Use the `-f` flag to follow the logs (keep the log stream open)
+    - Get info on the services running: `docker container top <container_id>`
 - Get configuration details: `docker container inspect <container name>`
     - Get container ip: `docker container inspect --format '{{ .NetworkSettings.IPAddress }}' <container_name>`
 - Get details on usage, memory etc. for all active containers: `docker container stats`
@@ -68,6 +64,12 @@
 - Create a network: `docker network create --driver`
 - Attach a network to a container: `docker network connect <network_id> <container_id>`
 - Detach a network from a container: `docker network disconnect`
+
+## Docker Volumes
+- Cleanup unused volumes: `docker volume prune`
+- List all volumes: `docker volume ls`
+- Inspect a volume: `docker volume inspect <volume_name>`
+- Create a volume: `docker volume create <volume_name>`
 
 ## Good To Know
 - In mac, docker images are located in : `~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2`

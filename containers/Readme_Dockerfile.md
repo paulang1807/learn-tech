@@ -7,6 +7,7 @@
 - **WORKDIR** (Optional): Used to specify working directory (preferable compared to RUN cd ..)
 - **COPY** (Optional): Used to copy source code from local to container
     - Copy everything from the current directory in the host to the current directory in the container: `COPY . .`
+- **VOLUME** (Optional): Specify location in the host to store content from the container (particularly useful for specifying the data path for db containers)
 
 ## Useful Commands
 - Build an image from a dockerfile (if dockerfile name is the standard - Dockerfile): `docker image build -t <image_name> <path_for_image>`
@@ -18,3 +19,4 @@
     - The build process uses cache for the components that have not changed and rebuilds everything else
         - The rebuild starts at the point the first change is introduced and any subsequent component is rebuilt even if it is not changed.
 - When building on top of existing images, we do not need to specify all the required components as they are inherited from the base image.
+- Its not possible to create bind volumes using dockerfile; the bind volume needs to be specified during container run
