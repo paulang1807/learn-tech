@@ -1,3 +1,14 @@
+## Installation
+- For Linux (https://get.docker.com/): `curl -fsSL https://get.docker.com -o get-docker.sh`
+
+### Installation on Amazon Linux 2
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html
+- Update the installed packages and package cache on your instance: `sudo yum update -y`
+- Install the most recent Docker Community Edition package: `sudo amazon-linux-extras install docker`
+- Start the Docker service: `sudo service docker start`
+- Add the user to the docker group so you can execute Docker commands without using sudo: `sudo usermod -a -G docker <user_name>`
+- Log out and log back in again to pick up the new docker group permissions.
+
 ## Useful Commands
 - Get details on docker installation : `docker info`
 - Login to docker (writes session id to ~/.docker/config.json): `docker login`
@@ -18,10 +29,9 @@
     - Use `--rm` flag to remove the container on exit
     - Use `-d` or `--detach` flag to run it in the background (detached mode)
     - Use `-p <local_port>:<container_port>` or `--publish` flag to specify port
-    - Use `--net=host` to specify local host as the network
     - Use `--name` flag to give the container a name
     - Use `-e` or `--env` flag to pass environment variables
-    - Use `--net` flag to specify the network to connect to
+    - Use `--network` flag to specify the network to connect to
         - Use `--net=host` to specify host network
     - Use `--network-alias` to set a dns alias
     - Use `-v <[volume_name]:/<path_in_container>` flag to specify a volume
@@ -60,16 +70,30 @@
 
 ### Docker Networks
 - List all networks: `docker network ls`
+- Create a network: `docker network create [--driver] <network_name>`
 - Get network details: `docker network inspect <network_name>`
-- Create a network: `docker network create --driver`
 - Attach a network to a container: `docker network connect <network_id> <container_id>`
 - Detach a network from a container: `docker network disconnect`
+- Remove a network: `docker network rm <network_name>`
+- Remove all unused networks: `docker network prune`
 
-## Docker Volumes
+### Docker Volumes
 - Cleanup unused volumes: `docker volume prune`
 - List all volumes: `docker volume ls`
 - Inspect a volume: `docker volume inspect <volume_name>`
 - Create a volume: `docker volume create <volume_name>`
+
+### Docker Machine
+- We can use docker machine and virtual box to start multiple machines.
+- Start linux instances: `docker-machine create <machine_name>`
+    - Connect to the instance: `docker-machine ssh <machine_name>` or `docker-machine env <machine_name>`
+- Remove a machine: `docker-machine rm <machine_name>`
+
+### Health Checks
+```
+docker run  --health-cmd=<command-for-health-check> --health-interval=<interval> --health-retries=<retries> --health-timeout=<timeout> --health-start-period=<start-period> <image>
+docker run  --health-cmd="curl -f localhost:9000/health || exit 1" --health-interval=5s --health-retries=3 --health-timeout=3s --health-start-period=10s nginx:3.2
+```
 
 ## Good To Know
 - In mac, docker images are located in : `~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2`

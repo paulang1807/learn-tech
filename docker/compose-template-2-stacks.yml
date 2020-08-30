@@ -1,0 +1,92 @@
+# Based on the Docker Mastery Course by Bret Fisher
+version: '3.1'  # Recommend v3 minimum; 3.1 if using secrets
+
+services:  # containers. same as docker run
+  servicename: # a friendly name. this is also DNS name inside network
+    build: # Optional if you want to build the image; ignored by swarm stack, used by compose
+      context: # Optional use with build to specify the location where the dockerfile exists
+      dockerfile: # Optional name of dockerfile to use for build. This tag is not needed if the standard dockerfile name 'Dockerfile' is used.
+    deploy:   # similar to build; ignored by compose and used by swarm stack
+      mode: # deploy mode e.g., replicated
+      replicas: # specify number of nodes to be deployed on
+      labels: # label for the service
+      update_config:
+        parallelism: 
+        delay: # specify delay
+      restart_policy:
+        condition: # condition for restarting, e.g. on-failure
+        delay: # restart delay
+        max_attempts: # how many times it should try to restart
+        window: # interval between restart attempts
+      placement:
+        constraints: # constraints for nodes that can be used for the service
+    secrets: # Specify secret names
+      - list
+    environment: # Optional. when using secrets, specify variables with path for storing the secret files in the containers
+      Key: value
+    image: # Optional if you use build. If using build, this can be used to specify the image name. The process will first look for the image with that name in the local cache and then build if using the dockerfile specified above if the image is not found.
+    network_mode: # Optional, same as --net in docker run
+    depends_on: # Optional, specify the services in the docker compose that this service depends on
+      - list
+    stdin_open: # Optional, same as -i in docker run
+    tty: # Optional, same as -t in docker run
+    volumes: # Optional, same as -v in docker run; can specify options such as read-only (see example below)
+      - list
+    ports: #Optional, same as -p in docker run
+      - list
+    expose: #Optional, same as expose in dockerfile
+      - list
+    command:  # Optional, replace the default CMD specified by the image
+  web:  # container example 1
+    build:
+      context: .   # build in the current directory
+      dockerfile: test.Dockerfile
+    image: test-image
+    volumes:
+      - vol1:/usr/v1   # volumes created in the volumes section below
+      - vol2:/usr/v2
+  postgres:
+    image: postgres:9.4
+    deploy:   
+      mode: replicated
+      replicas: 1
+      labels: [APP=TESTAPP]
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints: [node.role == manager]
+    secrets:
+      - secret1
+      - secret2
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/secret1
+      POSTGRES_USER_FILE: /run/secrets/secret2
+  zookeeper:  # container example 2
+    image: confluentinc/cp-zookeeper:latest
+    depends_on:
+      - servicename
+    networks: # networks created in the networks section below
+      - network1
+  
+
+volumes: # Optional, same as docker volume create
+  vol1:
+  vol2:
+
+networks: # Optional, same as docker network create
+  network1:
+  network2:
+
+secrets: #Optional, for specifying files containing secrets
+  secret1:
+    file: <file_name_with_path_in_local> # Optional, use when not using external
+    external: true # Optional, when not using files; use `echo "secret_value" | docker secret create <secret_name> -` to specify secret. Cannot be used with docker-compose
+  secret2:
+    file: <file_name_with_path_in_local>
+

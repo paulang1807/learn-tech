@@ -8,6 +8,9 @@
 - **COPY** (Optional): Used to copy source code from local to container
     - Copy everything from the current directory in the host to the current directory in the container: `COPY . .`
 - **VOLUME** (Optional): Specify location in the host to store content from the container (particularly useful for specifying the data path for db containers)
+- **HEALTHCHECK** (Optional): 
+    - Basic Form: `HEALTHCHECK <healthcheck_command>`
+    - With Options (command is specified after the options): `HEALTHCHECK --timeout=<duration> --interval=<duration> --retries=<# of retries> --start-period=<duration> CMD <healthcheck_command>` 
 
 ## Useful Commands
 - Build an image from a dockerfile (if dockerfile name is the standard - Dockerfile): `docker image build -t <image_name> <path_for_image>`

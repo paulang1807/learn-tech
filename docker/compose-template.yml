@@ -12,7 +12,8 @@ services:  # containers. same as docker run
       - list
     stdin_open: # Optional, same as -i in docker run
     tty: # Optional, same as -t in docker run
-    environment: # Optional, same as -e in docker run
+    environment: # Optional, same as -e in docker run; specify key value pairs
+      Key: value
     volumes: # Optional, same as -v in docker run; can specify options such as read-only (see example below)
       - list
     ports: #Optional, same as -p in docker run
@@ -20,6 +21,12 @@ services:  # containers. same as docker run
     expose: #Optional, same as expose in dockerfile
       - list
     command:  # Optional, replace the default CMD specified by the image
+    healthcheck: # Optional
+      test: # command for testing
+      interval:
+      timeout:
+      retries:
+      start_period: # requires v3.4
   web:  # container example 1
     build:
       context: .   # build in the current directory
@@ -31,6 +38,12 @@ services:  # containers. same as docker run
   web2:  # container example with standard dockerfile build
     build: .
     image: test-image
+    healthcheck: # Optional
+      test: ["CMD","curl", "-f", "http://localhost/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 10s
   zookeeper:  # container example 2
     image: confluentinc/cp-zookeeper:latest
     network_mode: host
@@ -54,6 +67,8 @@ volumes: # Optional, same as docker volume create
   vol2:
 
 networks: # Optional, same as docker network create
+  network1:
+  network2:
 
 
 
