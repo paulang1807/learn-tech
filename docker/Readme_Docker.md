@@ -95,6 +95,79 @@ docker run  --health-cmd=<command-for-health-check> --health-interval=<interval>
 docker run  --health-cmd="curl -f localhost:9000/health || exit 1" --health-interval=5s --health-retries=3 --health-timeout=3s --health-start-period=10s nginx:3.2
 ```
 
+### Docker Registry
+- Pull the registry image: `docker pull registry`
+- Run registry image: `docker container run -d -p 5000:5000 --name registry registry`
+- Tag existing image and push to registry:
+    ```
+    docker tag <image_name> 127.0.0.1:5000/<image_name>
+    docker push 127.0.0.1:5000/<image_name>
+    ```
+- Pull image from registry: `docker pull 127.0.0.1:5000/<image_name>`
+
+#### Running Secure Registry with basic Authentication
+- Reference: https://training.play-with-docker.com/linux-registry-part2/
+- Generate SSL certificate and configure it to run a secure docker registry:
+    - Generate cert
+        ```
+        mkdir -p certs 
+        openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt
+        ```
+    - To get the docker daemon to trust the certificate, copy the domain.crt file:
+        ```
+        mkdir /etc/docker/certs.d
+        mkdir /etc/docker/certs.d/127.0.0.1:5000 
+        cp $(pwd)/certs/domain.crt /etc/docker/certs.d/127.0.0.1:5000/ca.crt
+        ```
+    - Restart the docker daemon (/dev/null part is to avoid the output logs from docker daemon):
+        ```
+        pkill dockerd
+        dockerd > /dev/null 2>&1 &
+        ```
+- Use htpasswd to generate file with username and encrypted password (refer htpasswd --help for details of the options used):
+    ```
+    mkdir auth
+    htpasswd -Bbn <username> <password> > auth/htpasswd
+    ```
+    - A file htpasswd will be created with an entry in the form `<username>:<encrypted_password>`
+- Run registry container with authentication:
+    ```
+    mkdir registry-data
+    docker run -d -p 5000:5000 --name registry \
+    --restart unless-stopped \
+    -v $(pwd)/registry-data:/var/lib/registry \
+    -v $(pwd)/certs:/certs \
+    -v $(pwd)/auth:/auth \
+    -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+    -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
+    -e REGISTRY_AUTH=htpasswd \
+    -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+    -e "REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd" \
+    registry
+    ```
+    - Options used in the above command:
+        - **--restart unless-stopped** - restart the container when it exits, unless it has been explicitly stopped. When the host restarts, Docker will start the registry container, so it’s always available
+        - **-v $pwd\certs:c:\certs** - mount the local certs folder into the container, so the registry server can access the certificate and key files
+        - **-e REGISTRY_HTTP_TLS_CERTIFICATE** - specify the location of the SSL certificate file
+        - **-e REGISTRY_HTTP_TLS_KEY** - specify the location of the SSL key file
+        - **-v $(pwd)/auth:/auth** - mount the local auth folder into the container, so the registry server can access htpasswd file;
+        - **-e REGISTRY_AUTH=htpasswd** - use the registry’s htpasswd authentication method
+        - **-e REGISTRY_AUTH_HTPASSWD_REALM='Registry Realm'** - specify the authentication realm
+        - **-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd** - specify the location of the htpasswd file
+- Push the desired image to the registry (the image will need to be tagged with the localhost first):
+    ```
+    docker tag <image_name> 127.0.0.1:5000/<image_name>
+    docker push 127.0.0.1:5000/<image_name>
+    ```
+    - We can view the available images in the registry by using the url: `http://localhost:5000/v2/_catalog`
+- Whenever we want to pull our pushed images from the registry, 
+    - we can start the authenticated registry container first (as shown above) and then pull the image OR
+    - login to the registry first: `docker login 127.0.0.1:5000` and then pull the image
+        ```
+        docker pull 127.0.0.1:5000/<image_name>
+        ```
+- To use docker registry in Swarm, just use `docker service create` instead of `docker run`.
+
 ## Good To Know
 - In mac, docker images are located in : `~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2`
 - Sometimes you may get permission denied when running docker commands. To get around this add the current user to the docker group:
