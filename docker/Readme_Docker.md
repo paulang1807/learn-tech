@@ -33,7 +33,7 @@
     - Use `-e` or `--env` flag to pass environment variables
     - Use `--network` flag to specify the network to connect to
         - Use `--net=host` to specify host network
-    - Use `--network-alias` to set a dns alias
+    - Use `--network-alias` to set a dns alias (Container name is used as dns alias by default)
     - Use `-v <[volume_name]:/<path_in_container>` flag to specify a volume
         - Specify a path instead of volume name to the left of the colon for creating bind volumes: `-v /<share_path_in_host>:/<path_in_container>`
 - Run bash shell when starting a new container: `docker container run -it --name nginx nginx bash`
@@ -84,7 +84,7 @@
 - Create a volume: `docker volume create <volume_name>`
 
 ### Docker Machine
-- We can use docker machine and virtual box to start multiple machines.
+- We can use docker machine and virtual box to start multiple machines locally.
 - Start linux instances: `docker-machine create <machine_name>`
     - Connect to the instance: `docker-machine ssh <machine_name>` or `docker-machine env <machine_name>`
 - Remove a machine: `docker-machine rm <machine_name>`
@@ -173,4 +173,5 @@ docker run  --health-cmd="curl -f localhost:9000/health || exit 1" --health-inte
 - Sometimes you may get permission denied when running docker commands. To get around this add the current user to the docker group:
 `sudo usermod -a -G docker <username>`
 - To set up command line help (shell completion), follow the links in this url - https://docs.docker.com/docker-for-mac/#install-shell-completion
-- In order to create a private docker image, create a private repo in docker hub first and then upload the image.
+- In order to create a private docker image, create a private repo in docker hub first and then upload the image OR use docker registry.
+- Whe using images, it is better to specify the version rather than just using 'latest'. This is because the version represented by latest may change depending on whatever the most current version is and may introduce compatibility or other issues with the rest of the infrastructure.

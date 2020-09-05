@@ -5,7 +5,7 @@
 
 ### Working with Services
 - List services: `docker service ls`
-- Create services (similar to containers): `docker service create <image_name> [<command>]`
+- Create services (similar to container run): `docker service create <image_name> [<command>]`
     - Use the `--replicas <number of replicas>` to specify the number of replicas when creating the service: `docker service create --replicas <number of replicas> <image_name> [<command>]`
         - Use the `--mount` option to mount volumes: `--mount type=volume,source=<volume_name>,target=<target_path>`
     - Use the `--detach=false` option to view the commands getting executed in real time
