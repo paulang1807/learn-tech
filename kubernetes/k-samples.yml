@@ -1,0 +1,57 @@
+apiVersion: #[API GROUP/]version. API Group can be found by looking at the 'APIGROUP' column of the result from the `kubectl api-resources` command. The full value of the parameter can be taken based on the results of the `kubectl api-version` command.
+kind: # Kind of service. List can be found by looking at the 'KIND' column of the result from the `kubectl api-resources` command
+metadata:
+  name: # Name for the resource
+  labels: # List used to describe the objects
+  - key: value # e.g. tier: frontend,app: api, env:prod etc.
+  annotations: # List used for defining configurations used to communicate with kubernetes objects.
+  - key: value
+spec: # Section for specifying the specifications for the desired keys. Get details using the `kubectl explain <NAME> --recursive`, `kubectl explain <NAME>.spec` or `kubectl explain <NAME>.spec.<KEY>` commands.
+  key: value
+  selector: # Pattern match to find the resource to be used
+    app: # Name or pattern
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.3
+    ports:
+    - containerPort: 80
+  volumes: # Ususally specified for kind 'Pod'. Specifies the volumes that can be mounted by the containers of a pod. Tied to the lifecycle of a pod.
+  - key1: value1
+  - persistentVolumeClaim: value # Specify a persistent storage in the same namespace; to be used beyond the lifecycle of a pod
+--- # Object Separator
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-nginx-service
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+  selector:
+    app: app-nginx
+--- # Object Separator
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels: # Matches the label to find the resource. The resource should be present in the 'templates' section.
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17.3
+        ports:
+        - containerPort: 80

@@ -5,7 +5,7 @@ kubectl run --generator <template-type> <template-name> [--rm --it] --image <ima
 kubectl run --generator run-pod/v1 mypod --rm --it --image <image-name> -- bash
 ```
     - Old way (deprecated): `kubectl run <image-name-alias> --image <image-name>`
-    - Creates a single pod similar to docker run which creates a single container
+        - Creates a single pod similar to docker run which creates a single container
     
 - Create a deployment: `kubectl create deployment <image-name-alias> --image <image-name>`
     - Creates the pod, the container inside the pod as well as other objects such as replica set and deployment set
@@ -17,6 +17,7 @@ kubectl run --generator run-pod/v1 mypod --rm --it --image <image-name> -- bash
 - Create a job: `kubectl create job <image-name-alias> --image <image-name>`
 - List running pods: `kubectl get pods`
     - Use the `-w` flag to watch (wait and refresh on change)
+    - Use `-l` flag to look for pods matching certain label(s): `kubectl get pods -l app=nginx`
 - Get all objects: `kubectl get all`
 - Scale replicas (in the below command, deploy=deployment=deployments): 
 ```
@@ -45,6 +46,33 @@ kubectl scale deployment <image-name-alias> --replicas <number of replicas>
 
 ### Working with NameSpaces
 - Get all namespaces: `kubectl get namespaces`
+    - View details on everything running in the background as well: `kubectl get all --all-namespaces`
+
+### Declarative Kubernetes (using yaml files)
+- Create or update resources in a file: `kubectl apply -f <file.yaml>`
+    - Create or update from a whole directory: `kubectl apply -f <dir_name>/`
+    - Create or update from a url: `kubectl apply -f <https://domain.com/file.yml>`
+        - Check the contents of the file: `curl -L <https://domain.com/file.yml>`
+    - Use `-l` flag to apply only for sections matching certain label(s): `kubectl apply -f <file.yaml> -l app=nginx`
+    - Dry run where the process checks against the specs on the server to find out about existing resources: `kubectl apply -f <file.yaml> --server-dry-run`
+        - Just tells us whether there is a change in the specs without actually showing the differences.
+        - Use `-diff` to view the actual differences: `kubectl diff -f <file.yaml>`
+- Get resource details to be used in the service specs: `kubectl api-resources`
+- Get api-version: `kubectl api-version`
+- Get list of all keys supported by each KIND: `kubectl explain <NAME> --recursive`
+    - NAME in the above command is the NAME corresponding to the desired KIND in the api-resources resultset
+    - For KIND 'Service': `kubectl explain services --recursive`
+- Get more details on the specs: `kubectl explain <NAME>.spec`
+    - Provides description and supported types
+- Get details on a specific key of the spec: `kubectl explain <NAME>.spec.<KEY>`
+    - For getting details for the key 'type' for 'services': `kubectl explain services.spec.type`
+    - Provides values for the 'kind' and 'apiVersion' as well although the versions may be old/deprecated. Use api-version for the latest versions.
+- Get details for sub-specs (specs for keys of other specs): 
+    ```
+    kubectl explain <NAME>.spec.<KEY>.spec.<KEY>
+    kubectl explain deployments.spec.strategy.type.spec
+    kubectl explain pods.spec.volumes.persistentVolumeClaim
+    ```
 
 ## Good To Know
 - Services provide a stable address for connecting to pods
@@ -57,6 +85,10 @@ kubectl scale deployment <image-name-alias> --replicas <number of replicas>
 - When we create a cluster service, the IP will be accessible only by the nodes themselves or other pods in the same cluster. We can just create a pod and use its bash to test this out.
 - When we create a NodePort service, it creates the port in the format `<cluster-port>:<exposed-port>/<protocol>`. Here the order of the exposed and cluster ports are reversed compared to docker.
     - The exposed ports are in the range 30000 - 32767 (high range)
+- CSI (Container Storage Interface) plugins can be used to connect to third party storage 
+- Kubectl Context (cluster, authentication/user, namespace) is defined in the **~/.kube/config** file by default
+    - Use `kubectl config get-contexts` command to get the formatted output of the file
+    - Use `kubectl config set*` to set defaults for these contexts
 
 ### Common Terms
 - Node - Single server in the kubernetes cluster
