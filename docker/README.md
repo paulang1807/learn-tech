@@ -175,3 +175,13 @@ docker run  --health-cmd="curl -f localhost:9000/health || exit 1" --health-inte
 - To set up command line help (shell completion), follow the links in this url - https://docs.docker.com/docker-for-mac/#install-shell-completion
 - In order to create a private docker image, create a private repo in docker hub first and then upload the image OR use docker registry.
 - Whe using images, it is better to specify the version rather than just using 'latest'. This is because the version represented by latest may change depending on whatever the most current version is and may introduce compatibility or other issues with the rest of the infrastructure.
+- In order to help keep the containers secure, most software based images don't run as root user. They will have a master process running as the root user and all the worker processes running as some user.
+    - Most of the language based images (node, python etc.) have code in dockerfile to create a user (sample below from a node dockerfile) 
+    ```
+    RUN groupadd --gid 1000 node \
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+    ```
+    - It is the responsibility of the user to use that user for running the containers by including: `USER <username>`
+        - After switching user it is a good idea to include `--chown=<username>:<username>` option in the `COPY`, `mkdir` and similar commands to change the owner to the same user to avoid any permission issues when running programs in the container.
+        - Sample dockerfile - https://github.com/BretFisher/dockercon19/blob/master/1.Dockerfile
+- Docker security best practices - https://github.com/BretFisher/ama/issues/17

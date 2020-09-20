@@ -9,6 +9,7 @@
 - **COPY** (Optional): Used to copy source code from local to container
     - Copy everything from the current directory in the host to the current directory in the container: `COPY . .`
 - **VOLUME** (Optional): Specify location in the host to store content from the container (particularly useful for specifying the data path for db containers)
+- **USER** (Optional): Specify the user to be used (see [here](https://github.com/paulang1807/learn-tech/blob/master/docker/README.md#good-to-know))
 - **HEALTHCHECK** (Optional): 
     - Basic Form: `HEALTHCHECK <healthcheck_command>`
     - With Options (command is specified after the options): `HEALTHCHECK --timeout=<duration> --interval=<duration> --retries=<# of retries> --start-period=<duration> CMD <healthcheck_command>` 
