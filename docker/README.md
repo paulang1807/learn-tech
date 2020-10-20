@@ -89,6 +89,18 @@
     - Connect to the instance: `docker-machine ssh <machine_name>` or `docker-machine env <machine_name>`
 - Remove a machine: `docker-machine rm <machine_name>`
 
+### Docker Contexts
+- Traditional way using **DOCKER_HOST** environment variable: `DOCKER_HOST="tcp://<host_name>:<port>" docker ps`
+    - Example based on playwithdocker.com: `DOCKER_HOST="tcp://ip172-18-0-33-btm21t2osm4g00eblm00@direct.labs.play-with-docker.com:2375" docker ps`
+- Using Docker Contexts:
+    - Save the remote host into a context: `docker context create <context-name> --docker "host=<host_name>:<port>`
+        - Use host names from the ssh config file: `docker context create <context-name> --docker "host=ssh://<hostname-in-ssh-config>:<port>`
+    - List docker contexts: `docker context ls`
+    - Use a context (switch to docker in another host): `docker context use <context-name>`
+        - Use `-c` or `--context` to specify a context directly in a docker command: `docker -c <context-name> <docker_command>`
+    - Loop through all contexts: `for c in ``docker context ls -q``; do docker -c $c ps; done`
+        - Here `-q`is used for quiet execution
+
 ### Health Checks
 ```
 docker run  --health-cmd=<command-for-health-check> --health-interval=<interval> --health-retries=<retries> --health-timeout=<timeout> --health-start-period=<start-period> <image>
