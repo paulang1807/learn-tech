@@ -1,6 +1,10 @@
 ## Common CLI Command Usage
 
-### SAM 
+### RDS
+- Describe available clusters: `aws rds describe-db-clusters`
+- Execute query on rds: `aws rds-data execute-statement --resource-arn <cluster-arn> --secret-arn <secret-arn> --sql <sql-statement>`
+
+### SAM
 - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-command-reference.html
 - Build application: `sam build -t <templatefile>.yaml --parameter-overrides <Parameter1Name=Parameter1Value [,Parameter2Name=Parameter2Value],...>`
     - Use `-t` flag to specify the template yaml name if there are multiple yamls in the folder
@@ -10,7 +14,7 @@
     - `--capabilities` flag is mandatory and should be either `CAPABILITY_NAMED_IAM` if using IAM resources with custom names, `CAPABILITY_IAM` otherwise.
     - Use `--guided` option for providing the parameters interactively: `sam deploy --guided`
 
-#### Local Testing 
+#### Local Testing
 - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-invoke.html
 - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-invoke.html
 - One off invocation: `sam local invoke "<FunctionToInvoke>" -e <event-json.json>`
