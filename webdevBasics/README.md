@@ -140,8 +140,8 @@
                 }
             })
             ```
-                - DO NOT mention the .js suffix even for the CDN url
-                - We can use the `Network` section of the browser to test out the differences in the load time for CDN as opposed to the downloaded file
+            - DO NOT mention the .js suffix even for the CDN url
+            - We can use the `Network` section of the browser to test out the differences in the load time for CDN as opposed to the downloaded file
         - Use **shim config** to manage dependencies of dependencies for scripts that don't support AMD (asynchronous modules)
             ```
             require.config({
