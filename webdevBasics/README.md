@@ -3,7 +3,7 @@
 - **Higher Order Functions**: Functions that accept another function as argument or return a function
 - JS `arrays` are similar to python `lists` and js `objects` are similar to python `dicts`.
 - As a best practice, the names of constructor functions start with a capital letter. 
-- We usually put the js tag at the bottom of the html page so that all the html elements are avaialble for the code to act on.
+- We usually put the js tag at the bottom of the html page so that all the html elements are available for the code to act on.
 
 ## CSS Basics
 - Use [bootstrap components](https://getbootstrap.com/docs/4.5/components) for pre styled objects.
@@ -24,14 +24,14 @@
         ```
         body { background-color: var(--blue); }
         ```
-
-### Specificity
-- https://specificity.keegan.st/
-- Element Selectors -> Class Selectors -> ID Selectors -> Inline Style -> !Important
-
-### Box Model
-- Padding  is the space between the element and its border.
-- Margin is the space between two elements.
+- **Specificity**: https://specificity.keegan.st/
+    - Element Selectors -> Class Selectors -> ID Selectors -> Inline Style -> !Important
+- **Box Model**: 
+    - Padding  is the space between the element and its border.
+    - Margin is the space between two elements.
+- Using `rem` for specifying font size results in sizing the fonts relative other elements in the html
+- Responsive Design: Use [Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
+- Tooltips: Sample using [bootstrap](https://getbootstrap.com/docs/4.5/components/tooltips/)
 
 ### Positioning
 - https://www.w3schools.com/css/css_positioning.asp
@@ -61,11 +61,6 @@
             flex: 3;
         }
         ```
-
-### Other Tips
-- Fonts: Using `rem` for specifying size results in sizing the fonts relative other elements in the html
-- Responsive Design: Use [Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
-- Tooltips: Sample using [bootstrap](https://getbootstrap.com/docs/4.5/components/tooltips/)
 
 ## DOM Basics
 - Query elements in a document: 
@@ -105,6 +100,68 @@
     });
     ```
 
+## Require JS
+- Used for management of modular code
+    - Helps avoid having to add the script tag for each and every js file required.
+- All code is loaded relative to a base url: `<script data-main="<main js file>" src="<base url>"></script>`
+    - E.g. `<script data-main="./scripts/main.js" src=".scripts/require.js"></script>` where main.js is the entry point for the project.
+    - JS dependencies can be managed in the main js file using the `require` keyword.
+        - 
+        ```
+        require(['file1','library1']),function(){
+            <some code>
+        };
+        ```
+        - When using jquery as a dependency, we may can pass the `$` object as a parameter to the function
+            - If other dependencies are specified, we will need to specify parameters for all preceding dependencies as well.
+        ```
+        require(['library1']),function($){
+            <some jquery code>
+        };
+        ```
+    - Use a configuration setting in the main js file to define dependencies
+        - Define a base url in the config to specify the location against which all the dependency files are loaded.
+        - Define paths to specify a ref and name of the dependency file
+        ```
+        require.config({
+            baseUrl: 'lib',
+            paths: {
+                refName: 'dependencyFile'
+            }
+        })
+        ```
+        - We can mention the CDNs for the required js files and also include a downloaded version of the minified code to be used in offline mode( when the cdn url cannot be accessed). 
+            - In this case, we need to mention the CDN url as well as the path to the downloaded file in the paths parameter of the config section
+            ```
+            require.config({
+                baseUrl: 'lib',
+                paths: {
+                    refName: ['<CDN url>','dependencyFile']
+                }
+            })
+            ```
+                - DO NOT mention the .js suffix even for the CDN url
+                - We can use the `Network` section of the browser to test out the differences in the load time for CDN as opposed to the downloaded file
+        - Use **shim config** to manage dependencies of dependencies for scripts that don't support AMD (asynchronous modules)
+            ```
+            require.config({
+                baseUrl: 'lib',
+                paths: {
+                    refName1: ['<refName1 CDN url>','dependencyFile1'],
+                    refName2: ['<refName2 CDN url>'[,'dependencyFile']]
+                },
+                shim: {
+                    'refName2': {
+                        deps: ['refName1']
+                    }
+                }
+            })
+            ```
+- **Define Function**: 
+    - https://requirejs.org/docs/api.html#define
+    - Define a module that will be used by other parts of the application
+
+
 ## Useful Resources
 - VSCode html extension cheat sheet: https://docs.emmet.io/cheat-sheet/
 - Unicode characters: https://unicode-table.com/en/
@@ -114,3 +171,4 @@
 - Free Images: https://unsplash.com/
 - Minify js and css code: https://www.minifier.org/
 - Media Queries: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+- Require js: https://requirejs.org/
