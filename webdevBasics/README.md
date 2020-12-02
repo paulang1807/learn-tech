@@ -106,7 +106,6 @@
 - All code is loaded relative to a base url: `<script data-main="<main js file>" src="<base url>"></script>`
     - E.g. `<script data-main="./scripts/main.js" src=".scripts/require.js"></script>` where main.js is the entry point for the project.
     - JS dependencies can be managed in the main js file using the `require` keyword.
-        - 
         ```
         require(['file1','library1']),function(){
             <some code>
