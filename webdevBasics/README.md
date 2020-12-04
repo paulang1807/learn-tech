@@ -4,6 +4,7 @@
 - JS `arrays` are similar to python `lists` and js `objects` are similar to python `dicts`.
 - As a best practice, the names of constructor functions start with a capital letter. 
 - We usually put the js tag at the bottom of the html page so that all the html elements are available for the code to act on.
+- We can change the scope of a local variable to have a global scope by associating it to the window object: `window.localVar = localVar`
 
 ## CSS Basics
 - Use [bootstrap components](https://getbootstrap.com/docs/4.5/components) for pre styled objects.
@@ -82,6 +83,7 @@
     - To apply style from a css file: `$(<tagname> or <.classname> or <#id>).addClass(<style from css file>)`
     - To add innerHTML: `$(<tagname> or <.classname> or <#id>).html(<html to add>)`
     - To append (content including innerHTML) to any html element: `$(<tagname> or <.classname> or <#id>).append(<html to add>)`
+    - TO empty out content: `$(<tagname> or <.classname> or <#id>).empty()`
     - To add event listeners, we can just use the event to add the listener 
         - E.g., for click events`$(<tagname> or <.classname> or <#id>).click(<function>)`
         - Use `toggleClass` method to add and toggle classes: `$(<tagname> or <.classname> or <#id>).toggleClass(<class_name>)`
@@ -99,6 +101,7 @@
         <code to execute document is ready>
     });
     ```
+- Loop through data elements: `$.each(<dataElement>, function(key, value){...})`
 
 ## Require JS
 - Used for management of modular code
@@ -156,6 +159,25 @@
                 }
             })
             ```
+        - Multiple configurations can also be used by specifying a `context` and using the context (in curly braces) in the require specification
+            ```
+            // Config with context
+            require.config({
+                context: '<contextName1>',
+                ...
+            })
+
+            // Base Config
+            require.config({
+                path: '<pathValue>'
+            })
+
+            // require specification for base config
+            require(['<base library>'],function(){
+                //require specification for context based config
+                require({context: '<contextName1>'},['<library1>'])
+            })
+            ```
 - **Define Function**: 
     - https://requirejs.org/docs/api.html#define
     - Define a module that will be used by other parts of the application
@@ -165,9 +187,15 @@
 - VSCode html extension cheat sheet: https://docs.emmet.io/cheat-sheet/
 - Unicode characters: https://unicode-table.com/en/
 - Bootstrap: https://getbootstrap.com/
+- BootstrapSelect: https://developer.snapappointments.com/bootstrap-select/
 - Google fonts: https://fonts.google.com/
 - Font awesome: https://fontawesome.com
 - Free Images: https://unsplash.com/
 - Minify js and css code: https://www.minifier.org/
 - Media Queries: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 - Require js: https://requirejs.org/
+
+### Resources for Design
+- https://dribbble.com
+- https://color.adobe.com/explore/?filter=most-popular&time=month
+- https://uigradients.com/#TheStrain
