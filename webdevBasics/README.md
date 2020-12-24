@@ -83,7 +83,8 @@
     - To apply style from a css file: `$(<tagname> or <.classname> or <#id>).addClass(<style from css file>)`
     - To add innerHTML: `$(<tagname> or <.classname> or <#id>).html(<html to add>)`
     - To append (content including innerHTML) to any html element: `$(<tagname> or <.classname> or <#id>).append(<html to add>)`
-    - TO empty out content: `$(<tagname> or <.classname> or <#id>).empty()`
+    - To empty out content: `$(<tagname> or <.classname> or <#id>).empty()`
+    - To access different properties: `$(<tagname> or <.classname> or <#id>).prop(<propertyName>, <value>)`
     - To add event listeners, we can just use the event to add the listener 
         - E.g., for click events`$(<tagname> or <.classname> or <#id>).click(<function>)`
         - Use `toggleClass` method to add and toggle classes: `$(<tagname> or <.classname> or <#id>).toggleClass(<class_name>)`
@@ -102,6 +103,8 @@
     });
     ```
 - Loop through data elements: `$.each(<dataElement>, function(key, value){...})`
+- Custom attributes need to be referred using square brackets: `$('[data-<attr>]').click()`
+    - Access these attributes using `$(this).data("<attr>")`            
 
 ## Require JS
 - Used for management of modular code
@@ -194,6 +197,7 @@
 - Minify js and css code: https://www.minifier.org/
 - Media Queries: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 - Require js: https://requirejs.org/
+- Custom Attributes: https://www.w3schools.com/tags/att_global_data.asp
 
 ### Resources for Design
 - https://dribbble.com

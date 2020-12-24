@@ -9,6 +9,7 @@
 - **[App API](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/qlik-app-interface.htm)**:Entry point to methods within a qlik app (create hypercubes, reload app etc.)
     - `qlik.openApp` method is the entry point for this api. 
 - **[Field API](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/qlik-field-interface.htm)**: For interacting with qlik fields
+- **[Bookmark API](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/qlik-bookmark-interface.htm)**: For working with bookmarks
 
 ### Basic Steps
 - Load resources using **Require JS**
@@ -17,6 +18,8 @@
 - Work with qlik app
     - Create a list object (App api): `qlik.app.createList(qListObjectDef, callback)`
     - Get list of qlik objects (App api): `qlik.app.getList(type, callback)`
+    - Undo, Redo and Clear (App api): `app.back(), app.forward(), app.clearAll()`
+    - Access a field (Field api): `app.field('<field name>')`
     - Select specific values in a field (Field api): `qlik.app.field.selectValues(array, toggle, softlock)`
 
 ### Mashups
