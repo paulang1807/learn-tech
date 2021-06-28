@@ -3,10 +3,12 @@
 # dependencies
 react-app/default-react-app/node_modules
 react-app/my-first-react-app/node_modules
+react-app/my-second-react-app/node_modules
 react-app/paint-using-hooks/node_modules
 simple-web-server/node_modules
 default-react-app/node_modules
 my-first-react-app/node_modules
+my-second-react-app/node_modules
 paint-using-hooks/node_modules
 default-react-app/.pnp
 default-react-app/.pnp.js
@@ -18,11 +20,13 @@ paint-using-hooks/.pnp.js
 # testing
 default-react-app/coverage
 my-first-react-app/coverage
+my-second-react-app/coverage
 paint-using-hooks/coverage
 
 # production
 default-react-app/build
 my-first-react-app/build
+my-second-react-app/build
 paint-using-hooks/build
 
 # misc
@@ -36,6 +40,11 @@ my-first-react-app/.env.local
 my-first-react-app/.env.development.local
 my-first-react-app/.env.test.local
 my-first-react-app/.env.production.local
+my-second-react-app/.DS_Store
+my-second-react-app/.env.local
+my-second-react-app/.env.development.local
+my-second-react-app/.env.test.local
+my-second-react-app/.env.production.local
 paint-using-hooks/.DS_Store
 paint-using-hooks/.env.local
 paint-using-hooks/.env.development.local
@@ -48,6 +57,9 @@ default-react-app/yarn-error.log*
 my-first-react-app/npm-debug.log*
 my-first-react-app/yarn-debug.log*
 my-first-react-app/yarn-error.log*
+my-second-react-app/npm-debug.log*
+my-second-react-app/yarn-debug.log*
+my-second-react-app/yarn-error.log*
 paint-using-hooks/npm-debug.log*
 paint-using-hooks/yarn-debug.log*
 paint-using-hooks/yarn-error.log*
