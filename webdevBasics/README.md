@@ -1,3 +1,7 @@
+# NPM and Node Basics
+- `npm install --global library-name` : To install a library globally
+- `npm install --save library-name` : To install a library locally in the current project folder
+- `node <filename.js>` : To run a program
 ## JS Basics
 - **Callback Function**: Functions that is passed as an argument to another function
 - **Higher Order Functions**: Functions that accept another function as argument or return a function

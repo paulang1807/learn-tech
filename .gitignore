@@ -4,30 +4,30 @@
 react-app/default-react-app/node_modules
 react-app/my-first-react-app/node_modules
 react-app/my-second-react-app/node_modules
-react-app/paint-using-hooks/node_modules
+react-app/2.barebones-react-app/node_modules
 simple-web-server/node_modules
 default-react-app/node_modules
 my-first-react-app/node_modules
 my-second-react-app/node_modules
-paint-using-hooks/node_modules
+2.barebones-react-app/node_modules
 default-react-app/.pnp
 default-react-app/.pnp.js
 my-first-react-app/.pnp
 my-first-react-app/.pnp.js
-paint-using-hooks/.pnp
-paint-using-hooks/.pnp.js
+2.barebones-react-app/.pnp
+2.barebones-react-app/.pnp.js
 
 # testing
 default-react-app/coverage
 my-first-react-app/coverage
 my-second-react-app/coverage
-paint-using-hooks/coverage
+2.barebones-react-app/coverage
 
 # production
 default-react-app/build
 my-first-react-app/build
 my-second-react-app/build
-paint-using-hooks/build
+2.barebones-react-app/build
 
 # misc
 default-react-app/.DS_Store
@@ -45,11 +45,11 @@ my-second-react-app/.env.local
 my-second-react-app/.env.development.local
 my-second-react-app/.env.test.local
 my-second-react-app/.env.production.local
-paint-using-hooks/.DS_Store
-paint-using-hooks/.env.local
-paint-using-hooks/.env.development.local
-paint-using-hooks/.env.test.local
-paint-using-hooks/.env.production.local
+2.barebones-react-app/.DS_Store
+2.barebones-react-app/.env.local
+2.barebones-react-app/.env.development.local
+2.barebones-react-app/.env.test.local
+2.barebones-react-app/.env.production.local
 
 default-react-app/npm-debug.log*
 default-react-app/yarn-debug.log*
@@ -60,4 +60,6 @@ my-first-react-app/yarn-error.log*
 my-second-react-app/npm-debug.log*
 my-second-react-app/yarn-debug.log*
 my-second-react-app/yarn-error.log*
-2. barebones-react-app/package-lock.json
+2.barebones-react-app/npm-debug.log*
+2.barebones-react-app/yarn-debug.log*
+2.barebones-react-app/yarn-error.log*
