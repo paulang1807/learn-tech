@@ -1,1 +1,1 @@
-# react-learn
+# learn-tech

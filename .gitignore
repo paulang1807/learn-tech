@@ -60,6 +60,4 @@ my-first-react-app/yarn-error.log*
 my-second-react-app/npm-debug.log*
 my-second-react-app/yarn-debug.log*
 my-second-react-app/yarn-error.log*
-paint-using-hooks/npm-debug.log*
-paint-using-hooks/yarn-debug.log*
-paint-using-hooks/yarn-error.log*
+2. barebones-react-app/package-lock.json
