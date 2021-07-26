@@ -3,7 +3,7 @@ import React from 'react';
 function Component1(props) {
     return (
         <div>
-            Component1
+            Component {props.match.params.id}
             {console.log(props)}
         </div>
 

@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import '../srcStyles.css'
 
 class Header extends Component {
+    state = {
+        nums: [
+            {id: 1},
+            {id: 2},
+            {id: 3},
+        ]
+    }
     render() {
         return (
             <div>
@@ -11,15 +18,14 @@ class Header extends Component {
                     <Link to='/home' className='StyleSpace'>
                         Home
                     </Link>
-                    <Link to='/home/component1' className='StyleSpace'>
-                        Component1
+                    {this.state.nums.map(i => 
+                    <Link key={i.id} to={{pathname: '/home/component' + i.id}} className='StyleSpace'>
+                        Component{i.id}
                     </Link>
-                    <Link to='/home/component2' className='StyleSpace'>
-                        Component2
-                    </Link>
-                    <Link to='/home/component3' className='StyleSpace'>
-                        Component3
-                    </Link>
+
+                    
+
+                    )}
             </div>
         )   
     }
