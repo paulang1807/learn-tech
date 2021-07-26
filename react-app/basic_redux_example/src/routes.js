@@ -20,7 +20,7 @@ class Routes extends Component {
                         <Header />
                         <Switch>
                             <Route exact path="/home" component={Container1}/>
-                            <Route path="/home/component1" component={Component1}/>
+                            <Route path="/home/component1" render = {(props) => <Component1 {...props}/>}/>
                             <Route path="/home/component2" component={Component2}/>
                             <Route path="/home/component3" component={Component3}/>
                         </Switch>
