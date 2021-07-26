@@ -1,6 +1,9 @@
 ## React Basics
 ### General
 :point_right: If we don't 'export default' a functional component, we have to use curly braces when importing the component in other files.
+- All components should be in uppercase
+- Adjacent jsx elements must be enclosed in a tag
+- In legacy codes, if arrow functions are not used, we need to bind the functions to `this` using `this.<function_name> = this.<function_name>.bind(this)`. The above is done inside the constructor (the constructor also needs to have the `super(props)` method). Otherwise we will get an error.
 ### Styles
 - We can use css files in react in multiple ways
     - define it in the index.html (using `link rel='stylesheet'...`)
@@ -31,3 +34,39 @@
         - Uses render function to return jsx
         - State aware
         - Used for scenarios involving user interactions
+:exclamation: When using props in class components, we need to use the keyword `this` before `props` whereas props in functional components can be accessed directly just using   `props`
+- When passing a list as a prop to a component we need to specify a unique key using the `key` keyword.
+
+### Forms
+- We usually handle the change and submit events for forms using methods called `handleChange` and `handleSubmit` (although these can be named anything else as well) respectively.
+- The data in the forms is accessed using the `event` (keyword) parameter that is passed to the above methods.  
+    - Some commonly used properties of the `event` are `name, value, type, checked` etc.  
+        - We use `event.target.value` to access the value in the `handleChange` method whereas we use `event.target.<element_id>.value` to access the value in the `handleSubmit` method. Here `element_id` is the value assigned to the id attribute of the element.
+    - We can use `event.preventDefault()` to prevent the browser from submitting every time the form is submitted.
+
+## Redux
+- Install
+    - `npm install redux`
+    - `npm install react-redux`
+- State management library to update and persist state across all components ( to get over the one way binding limitation of props)
+- Has two main parts: Actions and Reducers
+    - Reducers have switch-case statements corresponding to each Action. 
+- Only class based react components are aware of the redux state
+
+## React, Redux and React-Redux
+- Update state
+    - React: this.setState()
+    - Redux: store.dispatch()
+    - React-Redux: mapDispatchToProps(), this.props.dispatch_action()
+        - `mapDispatchToProps` modifies the state globally and allows to use the state globally in the app
+- Read State
+    - React: this.state.<property_name>
+    - Redux: store.getState()
+    - React-Redux - matchStateToProps(), this.props.<property_name>
+        - `matchStateToProps` is only applicable to the component it is used in
+- `connect()` is used to connect the react container to the redux store
+    - For Read and Actions containers, use `connect(matchStateToProps, mapDispatchToProps)(Container1)`
+        - The StateToProps parameter should be passed as the first parameter and the DispatchToProps should be passed as the second parameter
+    - For Read only containers, use `connect(matchStateToProps)(Container1)`
+    - For Actions only containers, use `connect(null, mapDispatchToProps)(Container1)`
+        - Since the StateToProps parameter is not needed here, we have to pass a null as the first parameter in its place

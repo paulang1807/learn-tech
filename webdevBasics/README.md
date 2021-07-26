@@ -6,6 +6,10 @@
 - **Callback Function**: Functions that is passed as an argument to another function
 - **Higher Order Functions**: Functions that accept another function as argument or return a function
 - JS `arrays` are similar to python `lists` and js `objects` are similar to python `dicts`.
+    - We can use the `.map` method to loop through the array elements. We can pass two parameters (item and index) to the method. This is similar to enumerate in python (which returns the actual object and the corresponding index):
+    ```javascript
+    Arr.map((item, index) => ...)
+    ```
 - As a best practice, the names of constructor functions start with a capital letter. 
 - We usually put the js tag at the bottom of the html page so that all the html elements are available for the code to act on.
 - We can change the scope of a local variable to have a global scope by associating it to the window object: `window.localVar = localVar`
