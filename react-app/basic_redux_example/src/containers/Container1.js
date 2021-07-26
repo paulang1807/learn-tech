@@ -26,8 +26,8 @@ class Container1 extends Component {
 
 function matchStateToProps(state) {
   return {
-    prop1: state.prop1,
-    prop2: state.prop2
+    prop1: state.reducer1.prop1,
+    prop2: state.reducer2.prop2
   }
 
 }
