@@ -49,7 +49,8 @@
     - `npm install react-router`
     - `npm install react-router-dom`
     - `npm install react-history`
-
+- If a part of one route path matches the complete path for some other route ( E.g., path1='/home/comp1' and path2='/home'), trying to access the first route (path1) will result in including the content from the second route (path2) as well.
+    - This can be avoided by importing `Switch` from `react-router` and including the keyword  `exact` in the route specification of the smaller path ( `<Route exact path="/home" component={component_name}/>`) 
 ## Redux
 - Install
     - `npm install redux`

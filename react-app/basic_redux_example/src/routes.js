@@ -9,7 +9,7 @@ import Header from "./containers/Header";
 
 import history from "./utils/history";
 
-import { Router, Route } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 
 class Routes extends Component {
     render() {
@@ -18,10 +18,12 @@ class Routes extends Component {
                 <Router history={history}>
                     <div>
                         <Header />
-                        <Route path="/home" component={Container1}/>
-                        <Route path="/component1" component={Component1}/>
-                        <Route path="/component2" component={Component2}/>
-                        <Route path="/component3" component={Component3}/>
+                        <Switch>
+                            <Route exact path="/home" component={Container1}/>
+                            <Route path="/home/component1" component={Component1}/>
+                            <Route path="/home/component2" component={Component2}/>
+                            <Route path="/home/component3" component={Component3}/>
+                        </Switch>
                     </div>
                 </Router>
             </div>

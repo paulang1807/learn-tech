@@ -11,13 +11,13 @@ class Header extends Component {
                     <Link to='/home' className='StyleSpace'>
                         Home
                     </Link>
-                    <Link to='/component1' className='StyleSpace'>
+                    <Link to='/home/component1' className='StyleSpace'>
                         Component1
                     </Link>
-                    <Link to='/component2' className='StyleSpace'>
+                    <Link to='/home/component2' className='StyleSpace'>
                         Component2
                     </Link>
-                    <Link to='/component3' className='StyleSpace'>
+                    <Link to='/home/component3' className='StyleSpace'>
                         Component3
                     </Link>
             </div>
