@@ -17,6 +17,7 @@ class Routes extends Component {
             <div>
                 <Router history={history}>
                     <div>
+                        <Header />
                         <Route path="/home" component={Container1}/>
                         <Route path="/component1" component={Component1}/>
                         <Route path="/component2" component={Component2}/>
