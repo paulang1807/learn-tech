@@ -44,6 +44,12 @@
         - We use `event.target.value` to access the value in the `handleChange` method whereas we use `event.target.<element_id>.value` to access the value in the `handleSubmit` method. Here `element_id` is the value assigned to the id attribute of the element.
     - We can use `event.preventDefault()` to prevent the browser from submitting every time the form is submitted.
 
+### Router and History
+- Install
+    - `npm install react-router`
+    - `npm install react-router-dom`
+    - `npm install react-history`
+
 ## Redux
 - Install
     - `npm install redux`
