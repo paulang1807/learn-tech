@@ -34,7 +34,7 @@
         - Uses render function to return jsx
         - State aware
         - Used for scenarios involving user interactions
-:exclamation: When using props in class components, we need to use the keyword `this` before `props` whereas props in functional components can be accessed directly just using   `props`
+- :exclamation: When using props in class components, we need to use the keyword `this` before `props` whereas props in functional components can be accessed directly just using   `props`
 - When passing a list as a prop to a component we need to specify a unique key using the `key` keyword.
 
 ### Forms
@@ -52,6 +52,7 @@
 - Has two main parts: Actions and Reducers
     - Reducers have switch-case statements corresponding to each Action. 
 - Only class based react components are aware of the redux state
+- Action Creators are functions that return actions
 
 ## React, Redux and React-Redux
 - Update state

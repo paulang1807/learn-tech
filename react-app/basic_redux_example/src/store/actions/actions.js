@@ -7,3 +7,24 @@ export const SUCCESS = {
 export const FAILURE = {
     type: ACTION_TYPES.FAILURE
 }
+
+// Action Creators
+export const success = () => {
+    return {
+        type: ACTION_TYPES.SUCCESS
+    }
+}
+
+export const failure = () => {
+    return {
+        type: ACTION_TYPES.FAILURE
+    }
+}
+
+// Action creator for user input
+export const user_input = (text) => {
+    return {
+        type: ACTION_TYPES.USER_INPUT,
+        payload: text
+    }
+}
