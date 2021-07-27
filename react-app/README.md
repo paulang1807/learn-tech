@@ -78,3 +78,10 @@
     - For Read only containers, use `connect(matchStateToProps)(Container1)`
     - For Actions only containers, use `connect(null, mapDispatchToProps)(Container1)`
         - Since the StateToProps parameter is not needed here, we have to pass a null as the first parameter in its place
+
+## Authentication
+- Installs
+    - `npm install auth0-js`
+## Useful Links
+- [Auth0](https://manage.auth0.com/dashboard/us/)
+- [JWT](https://jwt.io/)
