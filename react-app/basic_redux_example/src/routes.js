@@ -7,10 +7,10 @@ import Container1 from "./containers/Container1";
 import Header from "./containers/Header";
 
 import history from "./utils/history";
+import Auth from "./utils/auth";
+import AuthCheck from "./utils/authcheck";
 
 import { Router, Route, Switch } from 'react-router';
-
-import Auth from "./utils/auth";
 
 export const auth = new Auth()
 
@@ -28,6 +28,7 @@ class Routes extends Component {
                         <Header />
                         <Switch>
                             <Route exact path="/home" render = {() => <Container1 auth={auth} />}/>
+                            <Route path="/authcheck" render = {() => <AuthCheck auth={auth} />}/>
                             <Route  path="/callback" render = {(props) => { handleAuthentication(props); return <Callback />}} />
                             <Route path="/home/component:id" render = {(props) => <Component1 {...props}/>}/>
                         </Switch>
