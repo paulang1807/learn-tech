@@ -18,6 +18,9 @@ class Header extends Component {
                     <Link to='/home' className='StyleSpace'>
                         Home
                     </Link>
+                    <Link to="/privateroute" className="StyleSpace">
+                        PrivateRoute
+                    </Link>
                     {this.state.nums.map(i => 
                     <Link key={i.id} to={{pathname: '/home/component' + i.id}} className='StyleSpace'>
                         Component{i.id}

@@ -4,6 +4,9 @@
 - All components should be in uppercase
 - Adjacent jsx elements must be enclosed in a tag
 - In legacy codes, if arrow functions are not used, we need to bind the functions to `this` using `this.<function_name> = this.<function_name>.bind(this)`. The above is done inside the constructor (the constructor also needs to have the `super(props)` method). Otherwise we will get an error.
+- **Higher Order Component: Component that takes a component and returns another component.
+- Parenthesis are used to pass parameters in functions and curly braces are used to indicate the scope of something (https://www.akashmittal.com/expected-assignment-no-unused-expressions/)
+- https://stackoverflow.com/questions/48150567/react-router-difference-between-component-and-render
 ### Styles
 - We can use css files in react in multiple ways
     - define it in the index.html (using `link rel='stylesheet'...`)

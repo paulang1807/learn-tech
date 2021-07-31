@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import Component1 from "./functional/Component1";
 import Callback from "./functional/callback";
+import ProtectedRoute from "./functional/protectedroutes";
+import UnauthRedirect from "./functional/unauthredirect";
 
 import Container1 from "./containers/Container1";
 import Header from "./containers/Header";
@@ -10,7 +12,7 @@ import history from "./utils/history";
 import Auth from "./utils/auth";
 import AuthCheck from "./utils/authcheck";
 
-import { Router, Route, Switch } from 'react-router';
+import { Router, Route, Switch, Redirect } from 'react-router';
 
 export const auth = new Auth()
 
@@ -19,6 +21,15 @@ const handleAuthentication = props => {
         auth.handleAuth()
     }
 }
+
+// Higher Order Component
+const PrivateRoute = ({component:Component, auth }) => (
+        <Route render={props => auth.isAuthenticated() === true
+        ? <Component auth={auth} {...props} />
+        : <Redirect to={{pathname:'/redirect'}} />
+    }
+    />
+)
 class Routes extends Component {
     render() {
         return (
@@ -29,8 +40,11 @@ class Routes extends Component {
                         <Switch>
                             <Route exact path="/home" render = {() => <Container1 auth={auth} />}/>
                             <Route path="/authcheck" render = {() => <AuthCheck auth={auth} />}/>
+                            <Route path="/redirect" component={UnauthRedirect} />
                             <Route  path="/callback" render = {(props) => { handleAuthentication(props); return <Callback />}} />
                             <Route path="/home/component:id" render = {(props) => <Component1 {...props}/>}/>
+
+                            <PrivateRoute path="/privateroute" auth={auth} component={ProtectedRoute} />
                         </Switch>
                     </div>
                 </Router>
