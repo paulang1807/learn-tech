@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import '../srcStyles.css'
 
+import { connect } from 'react-redux';
+
 class Header extends Component {
     state = {
         nums: [
@@ -21,6 +23,10 @@ class Header extends Component {
                     <Link to="/privateroute" className="StyleSpace">
                         PrivateRoute
                     </Link>
+                    {!this.props.is_Authenticated
+                        ? <button onClick={() => this.props.auth.login()}>Login {this.props.is_Authenticated}</button>
+                        : <button onClick={() => this.props.auth.logout()}>Logout {this.props.is_Authenticated}</button>  //**this is not working
+                    }
                     {this.state.nums.map(i => 
                     <Link key={i.id} to={{pathname: '/home/component' + i.id}} className='StyleSpace'>
                         Component{i.id}
@@ -34,4 +40,11 @@ class Header extends Component {
     }
 }
 
-export default Header
+function mapStateToProps(state){
+    return {
+        is_Authenticated: state.auth_reducer.is_Authenticated
+    }
+
+}
+
+export default connect(mapStateToProps)(Header);

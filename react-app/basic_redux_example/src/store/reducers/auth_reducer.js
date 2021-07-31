@@ -1,7 +1,7 @@
 import * as ACTION_TYPES from '../actions/action_types';
 
 const initState = {
-    auth_prop: "false"
+    is_Authenticated: false
 }
 
 const AuthReducer = (state = initState, action) => {
@@ -9,12 +9,12 @@ const AuthReducer = (state = initState, action) => {
         case ACTION_TYPES.LOGIN_SUCCESS:
             return {
                 ...state,
-                auth_prop: "true"
+                is_Authenticated: true
             }
         case ACTION_TYPES.LOGIN_FAILURE:
             return {
                 ...state,
-                auth_prop: "false"
+                is_Authenticated: false
             }
         default:
             return state;

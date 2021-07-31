@@ -36,7 +36,7 @@ class Routes extends Component {
             <div>
                 <Router history={history}>
                     <div>
-                        <Header />
+                        <Header auth={auth}/>
                         <Switch>
                             <Route exact path="/home" render = {() => <Container1 auth={auth} />}/>
                             <Route path="/authcheck" render = {() => <AuthCheck auth={auth} />}/>

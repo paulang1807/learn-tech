@@ -8,10 +8,10 @@ import { connect } from 'react-redux';
 class AuthCheck extends Component {
     componentDidMount() {
         if(this.props.auth.isAuthenticated()) {
-            this.props.actioncreator5()
+            this.props.login_success()
             // history.replace('/')   // Used to redirect to home
         } else {
-            this.props.actioncreator6()
+            this.props.login_failure()
             // history.replace('/')   // Used to redirect to home
         }
     }
@@ -19,25 +19,25 @@ class AuthCheck extends Component {
     render() {
         return (
             <div>
-                Authenticated: {this.props.auth_prop}
+                Authenticated: {this.props.is_Authenticated}
             </div>
         )
     }
 }
 
 
-function matchStateToProps(state) {
+function mapStateToProps(state) {
     return {
-        auth_prop: state.auth_reducer.auth_prop
+        is_Authenticated: state.auth_reducer.is_Authenticated
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actioncreator5: () => dispatch(ACTIONS.login_success()),
-        actioncreator6: () => dispatch(ACTIONS.login_failure)
+        login_success: () => dispatch(ACTIONS.login_success()),
+        login_failure: () => dispatch(ACTIONS.login_failure())
     }
 }
 
 
-export default connect(matchStateToProps, mapDispatchToProps)(AuthCheck) 
+export default connect(mapStateToProps, mapDispatchToProps)(AuthCheck) 

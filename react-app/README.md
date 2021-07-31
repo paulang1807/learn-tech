@@ -73,12 +73,12 @@
 - Read State
     - React: this.state.<property_name>
     - Redux: store.getState()
-    - React-Redux - matchStateToProps(), this.props.<property_name>
-        - `matchStateToProps` is only applicable to the component it is used in
+    - React-Redux - mapStateToProps(), this.props.<property_name>
+        - `mapStateToProps` is only applicable to the component it is used in
 - `connect()` is used to connect the react container to the redux store
-    - For Read and Actions containers, use `connect(matchStateToProps, mapDispatchToProps)(Container1)`
+    - For Read and Actions containers, use `connect(mapStateToProps, mapDispatchToProps)(Container1)`
         - The StateToProps parameter should be passed as the first parameter and the DispatchToProps should be passed as the second parameter
-    - For Read only containers, use `connect(matchStateToProps)(Container1)`
+    - For Read only containers, use `connect(mapStateToProps)(Container1)`
     - For Actions only containers, use `connect(null, mapDispatchToProps)(Container1)`
         - Since the StateToProps parameter is not needed here, we have to pass a null as the first parameter in its place
 
