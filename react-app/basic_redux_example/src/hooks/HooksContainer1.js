@@ -1,9 +1,13 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState , useEffect, useReducer } from 'react';
+import * as Reducer from '../store/hooks_state/hookreducer';
+import * as ACTIONS from '../store/actions/actions';
 
 const HooksContainer1 = () => {
 
     const [test1, setTest1] = useState(2)
     const [test2, setTest2] = useState("Loading...")
+    const [state1, dispatch1] = useReducer(Reducer.HookReducer, Reducer.initState)  
+    // Here we are using state1 and dispatch1 for the state and dispatch properties but it is best practice to just use state and dispatch
 
     useEffect(() => {
         setTimeout(() => setTest2("Initial Use Effect Change"), 3000)
@@ -17,14 +21,28 @@ const HooksContainer1 = () => {
         setTest2("New use Effect Value")
     }
 
+    const handleDispatchSuccess = () => {
+        dispatch1(ACTIONS.success())
+        // We  can also dispatch in the following ways:
+        // dispatch1(ACTIONS.SUCCESS)
+        // dispatch1(type: "SUCCESS")
+    }
+
+    const handleDispatchFailure = () => {
+        dispatch1(ACTIONS.failure())
+    }
+
     return (
       <div>
         Hooks Container1
         <br />
         <button onClick={() => calcSquare()}>Get Square</button>
         <button onClick={() => changeValue()}>Use Effect Test</button>
+        <button onClick={() => handleDispatchSuccess()}>Dispatch Success</button>
+        <button onClick={() => handleDispatchFailure()}>Dispatch Failure</button>
         <p>Value: {test1}</p>
         <p>Value: {test2}</p>
+        <p>{state1.prop1}</p>
       </div>
     )
 
