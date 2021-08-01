@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-import './srcStyles.css'
 import Routes from './routes';
 
-class App extends Component {
-  
-  render() {
+const App = () => {
 
     return (
-      <div className="App">
+      <div>
         React
         <Routes />
       </div>
     )
 
   }
-}
 
 export default App;

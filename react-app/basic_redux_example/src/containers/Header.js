@@ -31,10 +31,10 @@ class Header extends Component {
                     <Link key={i.id} to={{pathname: '/home/component' + i.id}} className='StyleSpace'>
                         Component{i.id}
                     </Link>
-
-                    
-
                     )}
+                    <Link to="/hookscontainer" className="StyleSpace">
+                        Hooks Container
+                    </Link>
             </div>
         )   
     }

@@ -7,6 +7,7 @@ import UnauthRedirect from "./functional/unauthredirect";
 
 import Container1 from "./containers/Container1";
 import Header from "./containers/Header";
+import HooksContainer1 from "./hooks/HooksContainer1";
 
 import history from "./utils/history";
 import Auth from "./utils/auth";
@@ -41,6 +42,7 @@ class Routes extends Component {
                             <Route exact path="/home" render = {() => <Container1 auth={auth} />}/>
                             <Route path="/authcheck" render = {() => <AuthCheck auth={auth} />}/>
                             <Route path="/redirect" component={UnauthRedirect} />
+                            <Route path="/hookscontainer" component={HooksContainer1} />
                             <Route  path="/callback" render = {(props) => { handleAuthentication(props); return <Callback />}} />
                             <Route path="/home/component:id" render = {(props) => <Component1 {...props}/>}/>
 
