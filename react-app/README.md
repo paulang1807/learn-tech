@@ -82,6 +82,21 @@
     - For Actions only containers, use `connect(null, mapDispatchToProps)(Container1)`
         - Since the StateToProps parameter is not needed here, we have to pass a null as the first parameter in its place
 
+## React Hooks
+- useState()
+    - Similar to setState()
+    - Updates local component state
+- useEffect()
+    - Similar to ComponentDidMount()
+    - Used when the function needs to be called automatically
+    - `useEffect(() => { return value   })` : This will result in useEffect being called every time a component renders
+    - `useEffect(() => { return value   },[])` : This will result in useEffect being called only when the component mounts
+    - `useEffect(() => { return value   }, [<state_value>])` : This will result in useEffect being called every time the state value (specified in the call) changes
+
+- useContext()  
+    - Allows access and update of the global context state through the React context api (like react-redux)
+- useReducer()
+    - Updates local component state through redux actions and reducer (does not update state globally by itself)
 ## Authentication
 - Installs
     - `npm install auth0-js`
