@@ -25,7 +25,7 @@ class Header extends Component {
                     </Link>
                     {!this.props.is_Authenticated
                         ? <button onClick={() => this.props.auth.login()}>Login {this.props.is_Authenticated}</button>
-                        : <button onClick={() => this.props.auth.logout()}>Logout {this.props.is_Authenticated}</button>  //**this is not working
+                        : <button onClick={() => this.props.auth.logout()}>Logout {this.props.is_Authenticated}</button>
                     }
                     {this.state.nums.map(i => 
                     <Link key={i.id} to={{pathname: '/home/component' + i.id}} className='StyleSpace'>

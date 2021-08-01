@@ -9,7 +9,7 @@ class AuthCheck extends Component {
     componentDidMount() {
         if(this.props.auth.isAuthenticated()) {
             this.props.login_success()
-            // history.replace('/')   // Used to redirect to home
+            history.replace('/')   // Used to redirect to home
         } else {
             this.props.login_failure()
             // history.replace('/')   // Used to redirect to home
@@ -40,4 +40,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthCheck) 
+export default connect(mapStateToProps, mapDispatchToProps)(AuthCheck)
