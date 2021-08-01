@@ -44,10 +44,13 @@ const HooksContainer1 = () => {
         <button onClick={() => handleDispatchSuccess()}>Dispatch Success</button>
         <button onClick={() => handleDispatchFailure()}>Dispatch Failure</button>
         <button onClick={() => context.addGLobTst()}>Incr Global Context</button>
+        <button onClick={() => context.addCntxtGLobTst()}>Incr Global Context Red</button>
+        <button onClick={() => context.remCntxtGLobTst()}>Decr Global Context Red</button>
         <p>Value: {test1}</p>
         <p>Value: {test2}</p>
         <p>{state1.prop1}</p>
         <p>{context.valGlobTst}</p>
+        <p>{context.valCntxtGlobTst}</p>
       </div>
     )
 
