@@ -1,8 +1,11 @@
-import React, { useState , useEffect, useReducer } from 'react';
+import React, { useState , useEffect, useReducer, useContext } from 'react';
 import * as Reducer from '../store/hooks_state/hookreducer';
 import * as ACTIONS from '../store/actions/actions';
+import Context from '../utils/context';
 
 const HooksContainer1 = () => {
+
+    const context = useContext(Context);
 
     const [test1, setTest1] = useState(2)
     const [test2, setTest2] = useState("Loading...")
@@ -40,9 +43,11 @@ const HooksContainer1 = () => {
         <button onClick={() => changeValue()}>Use Effect Test</button>
         <button onClick={() => handleDispatchSuccess()}>Dispatch Success</button>
         <button onClick={() => handleDispatchFailure()}>Dispatch Failure</button>
+        <button onClick={() => context.addGLobTst()}>Incr Global Context</button>
         <p>Value: {test1}</p>
         <p>Value: {test2}</p>
         <p>{state1.prop1}</p>
+        <p>{context.valGlobTst}</p>
       </div>
     )
 
