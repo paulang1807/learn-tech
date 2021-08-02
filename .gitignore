@@ -51,15 +51,15 @@ basic_redux_example/.env.production.local
 2.barebones-react-app/.env.test.local
 2.barebones-react-app/.env.production.local
 
-default-react-app/npm-debug.log*
-default-react-app/yarn-debug.log*
-default-react-app/yarn-error.log*
-my-first-react-app/npm-debug.log*
-my-first-react-app/yarn-debug.log*
-my-first-react-app/yarn-error.log*
-basic_redux_example/npm-debug.log*
-basic_redux_example/yarn-debug.log*
-basic_redux_example/yarn-error.log*
+1.default-react-app/npm-debug.log*
+1.default-react-app/yarn-debug.log*
+1.default-react-app/yarn-error.log*
+3.my-first-react-app/npm-debug.log*
+3.my-first-react-app/yarn-debug.log*
+3.my-first-react-app/yarn-error.log*
+4.redux-auth0-and-react-hooks/npm-debug.log*
+4.redux-auth0-and-react-hooks/yarn-debug.log*
+4.redux-auth0-and-react-hooks/yarn-error.log*
 2.barebones-react-app/npm-debug.log*
 2.barebones-react-app/yarn-debug.log*
 2.barebones-react-app/yarn-error.log*
