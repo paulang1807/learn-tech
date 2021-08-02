@@ -51,6 +51,12 @@ const HooksContainer1 = () => {
         <p>{state1.prop1}</p>
         <p>{context.valGlobTst}</p>
         <p>{context.valCntxtGlobTst}</p>
+            <p>
+            ctxtredstate1: {context.chgFormCntxtGlobTst}
+            </p>
+            <p>
+            ctxtredsubmit1:    {context.subFormCntxtGlobTst}
+            </p>
       </div>
     )
 

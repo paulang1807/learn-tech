@@ -1,8 +1,11 @@
 import React, { useState, useReducer, useContext } from 'react';
 import * as Reducer from '../store/hooks_state/formhookreducer';
 import * as ACTIONS from '../store/actions/actions';
+import Context from '../utils/context';
 
 const HooksForm = () => {
+
+    const context = React.useContext(Context)
 
     const [state1, setState1] = useState('')
     const [submit1, setSubmit1] = useState('')
@@ -49,6 +52,17 @@ const HooksForm = () => {
             </p>
             <p>
             redsubmit1:    {state.user_text_submit}
+            </p>
+            <form onSubmit={context.subFormCntxtGLobTst}>
+                <label>React Ctxt Red Use State:</label>
+                <input id="txtRedCtxtSt" type="text" onChange={context.chgFormCntxtGLobTst} />
+                <button type="submit">Submit</button>
+            </form>
+            <p>
+            ctxtredstate1: {context.chgFormCntxtGlobTst}
+            </p>
+            <p>
+            ctxtredsubmit1:    {context.subFormCntxtGlobTst}
             </p>
     
         </div>
