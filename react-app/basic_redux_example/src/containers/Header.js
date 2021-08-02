@@ -35,6 +35,9 @@ class Header extends Component {
                     <Link to="/hookscontainer" className="StyleSpace">
                         Hooks Container
                     </Link>
+                    <Link to="/hooksform" className="StyleSpace">
+                        Hooks Form
+                    </Link>
             </div>
         )   
     }
