@@ -1,0 +1,15 @@
+version: '2'
+services:
+    mongo:
+        image: mongo
+        container_name: "local_mongodb"
+        restart: always
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: MongoRtAdmin
+          MONGO_INITDB_ROOT_PASSWORD: 3KGhitSaYfIsMWb1v
+        ports:
+            - "27017:27017"
+        volumes:
+            - local_mongo:/data/db
+volumes: 
+  local_mongo:
