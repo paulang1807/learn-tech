@@ -83,6 +83,14 @@
 - Inspect a volume: `docker volume inspect <volume_name>`
 - Create a volume: `docker volume create <volume_name>`
 
+#### Backing up docker volumes
+- Run another docker container, copy data from the desired volume and create a tar in the local machine:
+    - `docker run --rm --volumes-from <volume_to_be_backed_up>  -v <local_path_for_backup>:/backup ubuntu bash -c "cd <path_in_original_container> && tar cvf /backup/<filename>.tar ."`
+    - Here the backup is being done using an ubuntu image; `/backup` is the folder in the ubuntu container that is mapped to the local backup folder; `<path_in_original_container>` is the path in the original container that the volume to be copied was mapped to (.i.e., the folder whose data in the original container is in the volume) and `<filename>.tar` is the name of the tar file where the volume is backed up.
+- Create the volume where the backup needs to be restored. Run another docker container, untar and copy data from the backed up file into the desired volume:
+    - `docker volume create <new_volume>`
+    - `docker run --rm -v <new_volume>:/recover -v <local_path_for_backup>:/backup ubuntu bash -c "cd /recover && tar xvf /backup/<filename>.tar"` 
+
 ### Docker Machine
 - We can use docker machine and virtual box to start multiple machines locally.
 - Start linux instances: `docker-machine create <machine_name>`
