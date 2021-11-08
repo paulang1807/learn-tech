@@ -41,6 +41,13 @@
 - Using `rem` for specifying font size results in sizing the fonts relative other elements in the html
 - Responsive Design: Use [Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
 - Tooltips: Sample using [bootstrap](https://getbootstrap.com/docs/4.5/components/tooltips/)
+- Applying same style class to parent and child tags:
+```css
+    parentTag.className childTag1,
+    parentTag.className childTag2 {
+        css statements...
+    }
+```
 
 ### Positioning
 - https://www.w3schools.com/css/css_positioning.asp
@@ -195,17 +202,20 @@
 
 
 ## Useful Resources
-- VSCode html extension cheat sheet: https://docs.emmet.io/cheat-sheet/
-- Unicode characters: https://unicode-table.com/en/
-- Bootstrap: https://getbootstrap.com/
-- BootstrapSelect: https://developer.snapappointments.com/bootstrap-select/
-- Google fonts: https://fonts.google.com/
-- Font awesome: https://fontawesome.com
-- Free Images: https://unsplash.com/
-- Minify js and css code: https://www.minifier.org/
-- Media Queries: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-- Require js: https://requirejs.org/
-- Custom Attributes: https://www.w3schools.com/tags/att_global_data.asp
+- [VSCode html extension cheat sheet](https://docs.emmet.io/cheat-sheet/)
+- [Unicode characters](https://unicode-table.com/en/)
+- [Bootstrap](https://getbootstrap.com/)
+- [BootstrapSelect](https://developer.snapappointments.com/bootstrap-select/)
+- [Google fonts](https://fonts.google.com/)
+- [Font awesome](https://fontawesome.com)
+- [Free Images](https://unsplash.com/)
+- [Semantic UI](https://semantic-ui.com/)
+- [Minify js and css code](https://www.minifier.org/)
+- [Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
+- [Structured CSS](https://www.code-boost.com/beginners-guide-to-scss/)
+- [Require js](https://requirejs.org/)
+- [Custom Attributes](https://www.w3schools.com/tags/att_global_data.asp)
+- [Lodash](https://lodash.com/)
 
 ### Resources for Design
 - https://dribbble.com

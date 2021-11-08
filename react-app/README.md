@@ -103,3 +103,5 @@
 ## Useful Links
 - [Auth0](https://manage.auth0.com/dashboard/us/)
 - [JWT](https://jwt.io/)
+- [Styled Components](https://styled-components.com/docs/basics#getting-started)
+- [Material UI](https://mui.com/)
