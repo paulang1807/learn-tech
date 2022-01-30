@@ -105,3 +105,8 @@
 - [JWT](https://jwt.io/)
 - [Styled Components](https://styled-components.com/docs/basics#getting-started)
 - [Material UI](https://mui.com/)
+- [React Router](https://v5.reactrouter.com/web/guides/quick-start)
+- [Tippy](https://github.com/atomiks/tippyjs-react)
+- [Formik](https://formik.org/docs/overview)
+- [React Date Picker](https://reactdatepicker.com/)
+- [React Icons](https://react-icons.github.io/react-icons)

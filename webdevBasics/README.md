@@ -216,6 +216,8 @@
 - [Require js](https://requirejs.org/)
 - [Custom Attributes](https://www.w3schools.com/tags/att_global_data.asp)
 - [Lodash](https://lodash.com/)
+- [Numeral JS](http://numeraljs.com/)
+- [Tippy](https://atomiks.github.io/tippyjs/)
 
 ### Resources for Design
 - https://dribbble.com
