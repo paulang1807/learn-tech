@@ -99,3 +99,5 @@ kubectl scale deployment <image-name-alias> --replicas <number of replicas>
 - Service - Network endpoint to connect to a pod
 - Namespace - Filtered group of objects in a cluster
 
+## Useful Links
+- [Cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)

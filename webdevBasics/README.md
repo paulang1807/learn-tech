@@ -1,7 +1,14 @@
-# NPM and Node Basics
+## NPM and Node Basics
+- `npm init` : generates a package.json file
 - `npm install --global library-name` : To install a library globally
+    - Use `npm config get prefix` to find the install location for global libraries 
 - `npm install --save library-name` : To install a library locally in the current project folder
-- `node <filename.js>` : To run a program
+    - `npm install --save-dev library-name` or `npm install -D library-name` : To install a library and add it as a dev dependency in the package json file
+- `node <filename.js>` or `node <filename>` (without the .js): To run a program
+- `node` : Opens an interactive console for javascript coding
+- `module.exports = <object_name, class_name etc.>` : to export objects from a module so that they can be imported in other modules
+    - use `const <objectname, classname etc.> = require('<path>/<object_name or file_name>')` to import objects
+- We can use `__filename` and `__dirname` to get the values of the file and the directory respectively from within the js code
 ## JS Basics
 - **Callback Function**: Functions that is passed as an argument to another function
 - **Higher Order Functions**: Functions that accept another function as argument or return a function
@@ -202,6 +209,7 @@
 
 
 ## Useful Resources
+- [Node Documentation](https://nodejs.org/dist/latest-v16.x/docs/api/)
 - [VSCode html extension cheat sheet](https://docs.emmet.io/cheat-sheet/)
 - [Unicode characters](https://unicode-table.com/en/)
 - [Bootstrap](https://getbootstrap.com/)
@@ -218,6 +226,9 @@
 - [Lodash](https://lodash.com/)
 - [Numeral JS](http://numeraljs.com/)
 - [Tippy](https://atomiks.github.io/tippyjs/)
+- [Screen Sizes](https://screensiz.es/monitor)
+- [JWT Decoder](https://jwt.io/)
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ### Resources for Design
 - https://dribbble.com
