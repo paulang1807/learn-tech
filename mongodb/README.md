@@ -16,7 +16,7 @@
 ## Backup and restore database (see details [here](https://github.com/paulang1807/learn-tech/tree/master/docker#backing-up-docker-volumes))
 - `docker run --rm --volumes-from local_mongodb  -v /Documents/docker_mongo/bkp:/backup ubuntu bash -c "cd /data/db && tar cvf /backup/local_mongodb.tar ."`
 - `docker run --rm -v docker_mongo_local_mongodb:/recover -v /Documents/docker_mongo/bkp:/backup ubuntu bash -c "cd /recover && tar xvf /backup/local_mongodb.tar"`
-    - Make sure you use the correct volume name for recovery. For example, if we specify 'local_mongodb' as the volume name in the docker compose file, the volume that is actually created is 'docker_mongo_local_mongodb'. 
+    - Make sure you use the correct volume name for recovery. For example, if we specify 'local_mongodb' as the volume name in the docker compose file, the volume that is actually created is '<docker_compose_folder_name_in_local>_<volume_name_in_dockercompose>'. 
 
 
 # Useful Resources

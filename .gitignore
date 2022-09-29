@@ -30,22 +30,19 @@ basic_redux_example/build
 2.barebones-react-app/build
 
 # misc
-default-react-app/.DS_Store
+.DS_Store
 default-react-app/.env.local
 default-react-app/.env.development.local
 default-react-app/.env.test.local
 default-react-app/.env.production.local
-my-first-react-app/.DS_Store
 my-first-react-app/.env.local
 my-first-react-app/.env.development.local
 my-first-react-app/.env.test.local
 my-first-react-app/.env.production.local
-basic_redux_example/.DS_Store
 basic_redux_example/.env.local
 basic_redux_example/.env.development.local
 basic_redux_example/.env.test.local
 basic_redux_example/.env.production.local
-2.barebones-react-app/.DS_Store
 2.barebones-react-app/.env.local
 2.barebones-react-app/.env.development.local
 2.barebones-react-app/.env.test.local

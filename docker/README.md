@@ -189,7 +189,6 @@ docker run  --health-cmd="curl -f localhost:9000/health || exit 1" --health-inte
 - To use docker registry in Swarm, just use `docker service create` instead of `docker run`.
 
 ## Good To Know
-- In mac, docker images are located in : `~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2`
 - Sometimes you may get permission denied when running docker commands. To get around this add the current user to the docker group:
 `sudo usermod -a -G docker <username>`
 - To set up command line help (shell completion), follow the links in this url - https://docs.docker.com/docker-for-mac/#install-shell-completion
