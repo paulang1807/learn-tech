@@ -13,3 +13,4 @@ services:
             - local_mongo:/data/db
 volumes: 
   local_mongo:
+    external: true   # use this if the volume already exists
