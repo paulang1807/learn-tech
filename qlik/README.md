@@ -46,6 +46,7 @@
     - This adds a `Developer Menu` right click option for the objects in the dashboard.
         - Click this option to get the object for the chart.
 - Entering `Ctrl + 0 + 0` in the script editor generates dummy data for testing
+- To find out the id for the app that created a qvd, open the qvd in a notepad. The app id will be in the `<CreatorDoc>` tag
 
 ## Resources
 - [Mashup Docs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/Mashups/Content/Sense_Mashups/mashups-getting-started.htm)

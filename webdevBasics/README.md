@@ -229,6 +229,7 @@
 - [Screen Sizes](https://screensiz.es/monitor)
 - [JWT Decoder](https://jwt.io/)
 - [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Yup](https://github.com/jquense/yup)
 
 ### Resources for Design
 - https://dribbble.com
